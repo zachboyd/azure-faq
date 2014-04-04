@@ -9,7 +9,7 @@ Windows Azure Website Reverse Proxy
 I recently needed to create a reverse proxy on an Azure Website. All of the information I found related to reverse proxies on Azure were for VMs or Cloud Services, but not for websites. Turns out it can be done with through the use of site extensions. Information about site extensions can be found at
 https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions.
 
-I wanted my extension to be private so that any request onto the main website could potentially use a reverse proxy. In order to do this you need to place an applicationHost.xdt file directly under the site directory.
+In order to do this you need to place an applicationHost.xdt file directly under the site directory.
 
 ```
 /site
