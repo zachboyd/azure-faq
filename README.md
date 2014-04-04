@@ -19,7 +19,7 @@ I wanted my extension to be private so that any request onto the main website co
 
 ```
 
-You can do this using Kudu. Information can be found at http://blogs.msdn.com/b/benjaminperkins/archive/2014/03/24/using-kudu-with-windows-azure-web-sites.aspx
+You can do this using Kudu. Information on accessing Kudu can be found at https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service
 
 Inside of the applicationHost.xdt we need to modify the servers applicationHost.config to enable the proxy. To do this we can use the following code below.
 
