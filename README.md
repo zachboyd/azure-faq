@@ -35,6 +35,6 @@ Inside of the applicationHost.xdt we need to modify the servers applicationHost.
 
 ```
 
-Simply restart your website after adding the applicationHost.xdt file with the code above. This will enable the use of reverse proxies for your website. Now you can configure web.config or use the IIS Manager to remotely manage your website, http://blogs.msdn.com/b/windowsazure/archive/2014/02/28/remote-administration-of-windows-azure-websites-using-iis-manager.aspx
+Simply restart your website after adding the applicationHost.xdt file with the code above. This will enable the use of reverse proxies for your website. Now you can configure web.config or use IIS Manager to remotely manage your website, http://blogs.msdn.com/b/windowsazure/archive/2014/02/28/remote-administration-of-windows-azure-websites-using-iis-manager.aspx
 
 Hope this helps anyone else who has the same requirements.
