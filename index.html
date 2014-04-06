@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Azure-faq by zachboyd</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/zachboyd/azure-faq">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/zachboyd/azure-faq/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/zachboyd/azure-faq/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Azure-faq</h1>
+          <p>Random information about the Azure Platform</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/zachboyd">zachboyd</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="azure-faq" class="anchor" href="#azure-faq"><span class="octicon octicon-link"></span></a>Azure FAQ</h1>
+
+<p>A place to put helpful information on using the Azure platform</p>
+
+<h1>
+<a name="windows-azure-website-reverse-proxy" class="anchor" href="#windows-azure-website-reverse-proxy"><span class="octicon octicon-link"></span></a>Windows Azure Website Reverse Proxy</h1>
+
+<p>I recently needed to create a reverse proxy on an Azure Website. Websites have ARR installed, but proxies are disabled. Turns out it can be done with through the use of site extensions. Information about site extensions can be found at
+<a href="https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions">https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions</a>.</p>
+
+<p>In order to do this you need to place an applicationHost.xdt file directly under the site directory.</p>
+
+<pre><code>/site
+    applicationHost.xdt
+    /wwwroot
+/LogFiles
+
+</code></pre>
+
+<p>You can do this using Kudu. Information on accessing Kudu can be found at <a href="https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service">https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service</a></p>
+
+<p>Inside of the applicationHost.xdt we need to modify the servers applicationHost.config to enable proxies. To do this we can use the following code below.</p>
+
+<p><em>applicationHost.xdt</em></p>
+
+<pre><code>
+&lt;?xml version="1.0"?&gt; 
+&lt;configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform"&gt; 
+    &lt;system.webServer&gt; 
+            &lt;proxy enabled="true"  xdt:Transform="Insert"  /&gt;
+    &lt;/system.webServer&gt; 
+&lt;/configuration&gt; 
+
+</code></pre>
+
+<p>Simply restart your website after adding the applicationHost.xdt file with the code above. This will enable the use of reverse proxies for your website. Now you can configure web.config or use IIS Manager to remotely manage your website, <a href="http://blogs.msdn.com/b/windowsazure/archive/2014/02/28/remote-administration-of-windows-azure-websites-using-iis-manager.aspx">http://blogs.msdn.com/b/windowsazure/archive/2014/02/28/remote-administration-of-windows-azure-websites-using-iis-manager.aspx</a></p>
+
+<p>Hope this helps anyone else who has the same requirements.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
