@@ -1,8 +1,3 @@
-Azure FAQ
-=========
-
-A place to put helpful information on using the Azure platform
-
 Windows Azure Website Reverse Proxy
 =========
 
